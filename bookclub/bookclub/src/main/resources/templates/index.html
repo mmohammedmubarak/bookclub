@@ -11,7 +11,6 @@
 </head>
 <body>
 <div th:insert="~{fragments/header :: header}"></div>
-
 <main>
     <section class="py-5 text-center container">
         <div class="row py-lg-5">
@@ -25,8 +24,32 @@
             </div>
         </div>
     </section>
+    <div class="py-5 text-center bg-light">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
+                <div class="col" th:each="book:${books}">
+                    <div class="card h-100">
+                        <div class="card-body d-flex flex-column">
+                            <p class="card-text">
+                                <span th:text="${book.getTitle()}"></span>
+                                <br/>
+                                <small class="text-muted">
+                                    <em th:text="${book.getDescription()}"></em>
+                                </small>
+                            </p>
+                            <div class="mt-auto">
+                                <div class="btn-group ">
+                                    <a  th:href="@{/{id}(id=${book.getIsbn()})}"
+                                       class="btn btn-sm btn-outline-secondary">View</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </main>
-
 <div th:insert="~{fragments/footer :: footer}"></div>
 <div th:insert="~{fragments/scriptFooter :: scriptFooter}"></div>
 </body>
