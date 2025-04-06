@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bookclub | Wish List</title>
+    <!--  Bootstrap StyleSheet CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+</head>
+<body>
+<div th:insert="~{fragments/header :: header}"></div>
+<div class="py-4 container" style="max-width: 1000px;">
+    <div class="text-center">
+        <h2>My Wishlist</h2>
+        <br/>
+        <a href="/wishlist/new" th:href="@{/wishlist/new}" class="btn btn-outline-secondary text-center">New Wishlist
+            Item</a>
+        <br/>
+        <br/>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ISBN</th>
+            <th>Title</th>
+            <th>Functions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item: ${wishlist}">
+            <td th:text="${item.getIsbn()}"></td>
+            <td th:text="${item.getTitle()}"></td>
+            <td><a href="#">Edit</a> | <a href="#">Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div th:insert="~{fragments/footer :: footer}"></div>
+<div th:insert="~{fragments/scriptFooter :: scriptFooter}"></div>
+</body>
+</html>
