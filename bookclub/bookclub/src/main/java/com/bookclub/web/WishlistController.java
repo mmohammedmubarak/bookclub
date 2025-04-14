@@ -5,8 +5,10 @@
 package com.bookclub.web;
 
 import com.bookclub.model.WishlistItem;
-import com.bookclub.service.impl.MemWishlistDao;
+import com.bookclub.service.dao.WishlistDao;
+import com.bookclub.service.impl.MongoWishlistDao;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,6 +20,11 @@ import java.util.List;
 @Controller
 @RequestMapping("/wishlist")
 public class WishlistController {
+    WishlistDao wishlistDao = new MongoWishlistDao();
+    @Autowired
+    private void setWishlistDao(WishlistDao wishlistDao) {
+        this.wishlistDao = wishlistDao;
+    }
 
     /**
      * GET Method to retrieve and show wish list
@@ -26,8 +33,8 @@ public class WishlistController {
      */
     @RequestMapping(method = RequestMethod.GET)
     public String showWishlist(Model model){
-        MemWishlistDao dao = new MemWishlistDao();
-        List<WishlistItem> wishlist = dao.list();
+//        MemWishlistDao dao = new MemWishlistDao();
+        List<WishlistItem> wishlist = wishlistDao.list();
         model.addAttribute("wishlist", wishlist);
         return "wishlist/list";
     } // end showWishlist
@@ -54,8 +61,10 @@ public class WishlistController {
         if(bindingResult.hasErrors()){
             return "wishlist/new";
         }
-        else
+        else {
+            wishlistDao.add(wishlistItem);
             return "redirect:/wishlist";
+        }
     } // end addWishlistItem
 
 }
