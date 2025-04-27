@@ -15,8 +15,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.util.List;
-
 @Controller
 @RequestMapping("/wishlist")
 public class WishlistController {
@@ -28,14 +26,11 @@ public class WishlistController {
 
     /**
      * GET Method to retrieve and show wish list
-     * @param model
+//     * @param model
      * @return wishlist/list view
      */
     @RequestMapping(method = RequestMethod.GET)
-    public String showWishlist(Model model){
-//        MemWishlistDao dao = new MemWishlistDao();
-        List<WishlistItem> wishlist = wishlistDao.list();
-        model.addAttribute("wishlist", wishlist);
+    public String showWishlist(){
         return "wishlist/list";
     } // end showWishlist
 
