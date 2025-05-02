@@ -34,13 +34,15 @@
                                 <span th:text="${book.getTitle()}"></span>
                                 <br/>
                                 <small class="text-muted">
-                                    <em th:text="${book.getDescription()}"></em>
+                                    <em th:text="${book.getIsbn()}"></em>
                                 </small>
                             </p>
                             <div class="mt-auto">
                                 <div class="btn-group ">
-                                    <a  th:href="@{/{id}(id=${book.getIsbn()})}"
-                                       class="btn btn-sm btn-outline-secondary">View</a>
+                                    <a href="#" th:href="@{/{id}(id=${book.getIsbn()})}" class="btn btn-sm btn-outline-secondary">View</a>
+<!--                                    <a  th:href="@{/{id}(id=${book.getIsbn()})}"-->
+<!--                                       class="btn btn-sm btn-outline-secondary">View</a>-->
+                                    <a href="#" th:href="${book.getInfoUrl()}" class="btn btn-sm btn-outline-secondary" target="_blank">Web Link</a>
                                 </div>
                             </div>
                         </div>

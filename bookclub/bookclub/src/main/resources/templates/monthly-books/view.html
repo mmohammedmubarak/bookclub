@@ -26,14 +26,20 @@
                 <strong>Description:</strong>
                 </br>
                 <span class="card-text" th:text="${book.getDescription()}"></span>
+                </br>
+                </br>
+                <strong>Web Link:</strong>
+                <p>
+                    <a href="#" target="_blank" th:href="${book.getInfoUrl()}" th:text="${book.getInfoUrl()}"></a>
+                </p>
             </div>
             <br/>
-            <div>
-                <strong>Authors:</strong>
-                <ul th:each="author:${book.getAuthors()}">
-                    <li th:text="${author}"></li>
-                </ul>
-            </div>
+<!--            <div>-->
+<!--                <strong>Authors:</strong>-->
+<!--                <ul th:each="author:${book.getAuthors()}">-->
+<!--                    <li th:text="${author}"></li>-->
+<!--                </ul>-->
+<!--            </div>-->
         </div>
     </div>
     <br/>

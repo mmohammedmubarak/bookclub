@@ -5,7 +5,7 @@
 package com.bookclub.web;
 
 import com.bookclub.model.Book;
-import com.bookclub.service.impl.MemBookDao;
+import com.bookclub.service.impl.RestBookDao;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,8 +25,8 @@ public class HomeController {
      */
     @RequestMapping(method = RequestMethod.GET)
     public String showHome(Model model) {
-        MemBookDao memBookDao = new MemBookDao();
-        List<Book> books = memBookDao.list();  // Get all books and print using toString
+        RestBookDao restBookDao = new RestBookDao();
+        List<Book> books = restBookDao.list();  // Get all books and print using toString
         for (Book book : books) {
             System.out.println(book.toString());
         }
@@ -42,8 +42,8 @@ public class HomeController {
      */
     @RequestMapping(method = RequestMethod.GET,value = "/{id}")
     public String getMonthlyBook(@PathVariable("id") String id, Model model) {
-        MemBookDao memBookDao = new MemBookDao();
-        Book book = memBookDao.find(id);
+        RestBookDao restBookDao = new RestBookDao();
+        Book book = restBookDao.find(id);
         System.out.println(book.toString());
         model.addAttribute("book",book);
         return  "monthly-books/view";

@@ -4,8 +4,6 @@
 
 package com.bookclub.model;
 
-import java.util.List;
-
 public class Book {
     /**
      * Private fields for the class
@@ -13,8 +11,8 @@ public class Book {
     private String isbn;
     private String title;
     private String description;
+    private String infoUrl;
     private int numOfPages;
-    private List<String> authors;
 
     /**
      * Default Constructor
@@ -30,14 +28,20 @@ public class Book {
      * @param title
      * @param description
      * @param numOfPages
-     * @param authors
+//     * @param authors
      */
-    public Book(String isbn, String title, String description, int numOfPages, List<String> authors) {
+    public Book(String isbn, String title, String description, String infoUrl, int numOfPages) {
         this.isbn = isbn;
         this.title = title;
+        this.infoUrl = infoUrl;
         this.description = description;
         this.numOfPages = numOfPages;
-        this.authors = authors;
+    }
+
+    public Book(String isbn, String title, String infoUrl) {
+        this.isbn = isbn;
+        this.title = title;
+        this.infoUrl = infoUrl;
     }
 
     /**
@@ -75,12 +79,12 @@ public class Book {
         this.numOfPages = numOfPages;
     }
 
-    public List<String> getAuthors() {
-        return authors;
+    public String getInfoUrl() {
+        return infoUrl;
     }
 
-    public void setAuthors(List<String> authors) {
-        this.authors = authors;
+    public void setInfoUrl(String infoUrl) {
+        this.infoUrl = infoUrl;
     }
 
     /**
@@ -94,8 +98,8 @@ public class Book {
                 "isbn=" + isbn +
                 ", title=" + title +
                 ", description=" + description +
+                ", infoUrl=" + infoUrl +
                 ", numOfPages=" + numOfPages +
-                ", authors=" + authors +
                 "}";
     }
 }
