@@ -15,27 +15,7 @@
     <div class="text-center">
         <h2>My Wishlist</h2>
         <br/>
-<!--        <a href="/wishlist/new" th:href="@{/wishlist/new}" class="btn btn-outline-secondary text-center">New Wishlist-->
-<!--            Item</a>-->
-
     </div>
-<!--    <table class="table">-->
-<!--        <thead>-->
-<!--        <tr>-->
-<!--            <th>ISBN</th>-->
-<!--            <th>Title</th>-->
-<!--            <th>Functions</th>-->
-<!--        </tr>-->
-<!--        </thead>-->
-<!--        <tbody>-->
-<!--        <tr th:each="item: ${wishlist}">-->
-<!--            <td th:text="${item.getIsbn()}"></td>-->
-<!--            <td th:text="${item.getTitle()}"></td>-->
-<!--            <td><a href="#">Edit</a> | <a href="#">Delete</a></td>-->
-<!--        </tr>-->
-<!--        </tbody>-->
-<!--    </table>-->
-
     <p class="text-center">
         <a href="/wishlist/new" th:href="@{/wishlist/new}" class="btn btn-outline-secondary text-center">New Wishlist Item</a>
     </p>
@@ -64,7 +44,7 @@
         let tableString = `<table class="table"><tr><th>ISBN</th><th>Title</th><th>Functions</th></tr>`;
 
         for (let book of books) {
-            tableString += `<tr><td>${book.isbn}</td><td>${book.title}</td><td><a href="#">Edit</a> | <a href="#">Delete</a></td></tr>`;
+            tableString += `<tr><td>${book.isbn}</td><td>${book.title}</td><td><a href="/wishlist/${book.id}" th:href="@{/wishlist/${book.id}">Edit</a> | <a href="/wishlist/remove/${book.id}" th:href="@{/wishlist/remove/${book.id}">Delete</a></td></tr>`;
         }
 
         tableString += `</table>`
