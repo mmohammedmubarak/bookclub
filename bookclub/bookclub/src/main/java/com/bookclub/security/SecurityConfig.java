@@ -27,8 +27,11 @@ public class SecurityConfig  {
 
         http
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/monthly-books/list", "/monthly-books/new", "/monthly-books").hasRole("ADMIN")
+
                         .anyRequest().authenticated() // All requests require authentication
                 )
+
                 .formLogin(form -> form
                         .loginPage("/login") // Custom login page URL
                         .permitAll() // Allow everyone to access the login page
